@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310605546257",
+    "project_id": "todo-01-8cd48",
+    "storage_bucket": "todo-01-8cd48.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310605546257:android:9d662d19ec62085c2542b0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD72jzsVitccFJTynYLxuOv7hmgKt7n8wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
