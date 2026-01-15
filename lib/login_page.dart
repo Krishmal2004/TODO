@@ -1,11 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Todo.dart';
+import 'package:flutter_application_1/auth_service.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _emailController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Color(0xFFF8FAFF),
       body: SafeArea(
@@ -43,11 +47,21 @@ class LoginPage extends StatelessWidget {
                 width: double.infinity,
                 height: 60,
                 child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => TodoApp()),
+                  onPressed: () async {
+                    User? user = await AuthService().signIn(
+                      _emailController.text,
+                      _passwordController.text,
                     );
+                    if (user != null) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => TodoApp()),
+                      );
+                    }else {
+                      ScaffoldMessenger.of( context).showSnackBar(
+                        SnackBar(content: Text('Login failed. Please try again.')),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF0066FF),
