@@ -7,6 +7,7 @@ class AuthService {
 
   Future<User?> signIn(String email, String password) async {
     try {
+      await _auth.setLanguageCode("en");
       UserCredential result = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,

@@ -33,13 +33,14 @@ class LoginPage extends StatelessWidget {
               ),
               SizedBox(height: 50),
 
-              _buildTextField(label: 'Email', icon: Icons.email_outlined),
+              _buildTextField(label: 'Email', icon: Icons.email_outlined,controller:_emailController),
               SizedBox(height: 20),
 
               _buildTextField(
                 label: 'Password',
                 icon: Icons.lock_outline,
                 isPassword: true,
+                controller: _passwordController,
               ),
               SizedBox(height: 40),
               //Loging Button Create
@@ -90,6 +91,7 @@ class LoginPage extends StatelessWidget {
   Widget _buildTextField({
     required String label,
     required IconData icon,
+    required TextEditingController controller,
     bool isPassword = false,
   }) {
     return Container(
@@ -105,6 +107,7 @@ class LoginPage extends StatelessWidget {
         ],
       ),
       child: TextField(
+        controller: controller,
         obscureText: isPassword,
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: Colors.blue),
