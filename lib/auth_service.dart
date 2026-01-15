@@ -19,6 +19,20 @@ class AuthService {
     }
   }
 
+  Future<User?> signUp(String fullName, String email, String password) async {
+    try {
+      await _auth.setLanguageCode("en");
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return result.user;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   Stream<QuerySnapshot> getTasks(String title) {
     return _firestore.collection('tasks').snapshots();
   }
